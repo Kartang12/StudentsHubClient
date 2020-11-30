@@ -1,27 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from '../_Models/Subject';
-import { ExcersiseService } from '../_Services/excersise.service';
-import { Excersise } from '../_Models/Excersise';
-import { SubjectService } from '../_Services/subject.service';
 import { SubjectExcersise } from '../_Models/SubjectExcersise';
-import { Observable } from 'rxjs';
+import { ExcersiseService } from '../_Services/excersise.service';
+import { SubjectService } from '../_Services/subject.service';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Excersise } from '../_Models/Excersise';
 
 @Component({
-  selector: 'app-student',
-  templateUrl: './student.component.html',
-  styleUrls: ['./student.component.css']
+  selector: 'app-teatcher',
+  templateUrl: './teatcher.component.html',
+  styleUrls: ['./teatcher.component.css']
 })
-export class StudentComponent implements OnInit {
+export class TeatcherComponent implements OnInit {
 
   // test:number[][] = [[1,2],[4,5,6],[7,8,9,10]];
   subjects:Subject[]
-  // temp:Excersise[] = []
   subEx:SubjectExcersise[] = []
   flag:boolean = false;
   // subEx$: Observable<SubjectExcersise[]> = new Observable<SubjectExcersise[]>()
 
-  constructor(private exService: ExcersiseService, private subService: SubjectService, private http: HttpClient) { }
+  constructor(private exService: ExcersiseService, private subService:SubjectService, private http: HttpClient) { }
 
   ngOnInit(): void {
     this.getSubjects()

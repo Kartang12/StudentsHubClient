@@ -36,6 +36,8 @@ export class LoginComponent implements OnInit {
           this.route = "/student/"
         if(localStorage.getItem('role') == "Admin")
           this.route = "/admin/"
+        if(localStorage.getItem('role') == "Teatcher")
+          this.route = "/teatcher/"
         this.router.navigate([this.route])
       },
       err => console.log(err)

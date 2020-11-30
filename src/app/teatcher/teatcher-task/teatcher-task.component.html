@@ -1,0 +1,23 @@
+<div id="wrapper">
+    <div id="page-content-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 offset-2">
+                    <h3>Заголовок</h3>
+                    <span >{{ex.title}}</span>
+                    <input type = "text">
+                    <h3>Задание</h3>
+                    <span>{{ex.content}}</span>
+                    <br>
+                    <textarea type ="text" style="resize: both;"></textarea>
+                    <br>
+                    <h2>Ответ</h2>
+                    <span>{{ex.correctAnswer}}</span>
+                    <br>
+                    <input type = "text">
+                    <button type="button" (click)="confirmAnswer()">Подтвердить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

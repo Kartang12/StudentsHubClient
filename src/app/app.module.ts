@@ -10,6 +10,7 @@ import { StudentComponent } from './student/student.component';
 import { TaskComponent } from './student/task/task.component';
 import { AdminComponent } from './admin/admin.component';
 import { RegisterComponent } from './admin/register/register.component';
+import { TeatcherComponent } from './teatcher/teatcher.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { RegisterComponent } from './admin/register/register.component';
     StudentComponent,
     TaskComponent,
     AdminComponent,
-    RegisterComponent
+    RegisterComponent,
+    TeatcherComponent
   ],
   imports: [
     BrowserModule,

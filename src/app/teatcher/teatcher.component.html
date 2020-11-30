@@ -1,15 +1,14 @@
 <div class="d-flex" id="wrapper">
-    <!-- Sidebar -->
     <div class="bg-light border-right" id="sidebar-wrapper">
       <div class="sidebar-heading">Мои курсы </div>
+      <a href="teatcher/task/0">Новое задание</a>
       <div class="list-group list-group-flush">
         <ul *ngFor="let sub of subEx">
           <h3>{{sub.subject.name}}</h3>
           <li *ngFor="let ex of sub.excersises">
-            <a href="student/task/{{ex.id}}">{{ex.title}}</a>
+            <a href="teatcher/task/{{ex.id}}">{{ex.title}}</a>
           </li>
         </ul>
-
       </div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -53,17 +52,3 @@
     </div>
     <!-- /#page-content-wrapper -->
   </div>
-  <!-- /#wrapper -->
-
-  <!-- Bootstrap core JavaScript -->
-  <!-- <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <-- Menu Toggle Script
-  <script>
-    $("#menu-toggle").click(function(e) {
-      e.preventDefault();
-      $("#wrapper").toggleClass("toggled");
-    });
-    console.log(1);
-  </script> -->

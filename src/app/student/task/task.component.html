@@ -8,7 +8,11 @@
                  <div class="row">
                      <div class="col-lg-8 col-lg-offset-2">
                          <h1>{{ex.title}}</h1>
-                         <p>{{ex.content}}</p>                         
+                         <p>{{ex.content}}</p>
+                        <input type="text" (keyup)="getVal($event.target.value)">
+                        <br>
+                        <h6 style="color:red">У вас одна попытка</h6>
+                        <button type="button" (click)="confirmAnswer()">Подтвердить</button>
                      </div>
                  </div>
              </div>
