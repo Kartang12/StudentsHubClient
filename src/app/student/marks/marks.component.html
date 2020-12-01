@@ -1,0 +1,5 @@
+<ul *ngFor="let ex of marks">
+    <li>{{ex.taskId}}</li>
+    <span *ngIf="ex.mark == 1" style="color:green">Верно</span>
+    <span *ngIf="ex.mark == 0" style="color:red">Неерно</span>
+</ul>

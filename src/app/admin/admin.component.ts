@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../_Services/user.service';
+import { User } from '../_Models/User';
 
 @Component({
   selector: 'app-admin',

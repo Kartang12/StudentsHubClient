@@ -1,0 +1,7 @@
+<ul *ngFor="let user of users">
+    <li>
+        <span>{{user.name}}</span>
+        <span>{{user.role}}</span>
+        <button class="btn btn-danger" (click)="deleteUser(user.id)">Удалить</button>
+    </li>
+</ul>

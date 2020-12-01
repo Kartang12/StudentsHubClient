@@ -5,17 +5,26 @@
                 <div class="col-12 offset-2">
                     <h3>Заголовок</h3>
                     <span >{{ex.title}}</span>
-                    <input type = "text">
+                    <input [(ngModel)]="newEx.title">
                     <h3>Задание</h3>
                     <span>{{ex.content}}</span>
                     <br>
-                    <textarea type ="text" style="resize: both;"></textarea>
+                    <textarea [(ngModel)]="newEx.content" type ="text" style="resize: both;"></textarea>
                     <br>
                     <h2>Ответ</h2>
                     <span>{{ex.correctAnswer}}</span>
                     <br>
-                    <input type = "text">
-                    <button type="button" (click)="confirmAnswer()">Подтвердить</button>
+                    <input [(ngModel)]="newEx.correctAnswer" type = "text">
+                    <br>
+                    <div *ngIf="!flag">
+                        <h2>Предмет</h2>
+                        <br>
+                            <input [(ngModel)]="newEx.subjectName" type = "text">
+                        <br>
+                    </div>
+                    <button *ngIf="flag == true" class="mt-5 mx-5 btn btn-success" type="button" (click)="saveTask()">Сохранить</button>
+                    <button *ngIf="flag == true" class="mt-5 mx-5 btn btn-danger" type="button" (click)="deleteTask()">Удалить</button>
+                    <button *ngIf="!flag" class="mt-5" type="button" (click)="createTask()">Создать</button>
                 </div>
             </div>
         </div>

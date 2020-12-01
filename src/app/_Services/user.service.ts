@@ -31,8 +31,8 @@ export class UserService {
   //   return this.http.put<HttpResponseBase>(this._updateUserUrl + name, body)
   // }
 
-  deleteUser(name){
-    return this.http.delete<HttpResponseBase>(this._deleteUserUrl + name)
+  deleteUser(id){
+    return this.http.delete<HttpResponseBase>(this._deleteUserUrl + id)
   }
 
   changeMe(username:string, data:UserChangePassword){

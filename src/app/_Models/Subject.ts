@@ -1,9 +1,9 @@
 export class Subject
 {
     constructor(id: string, name: string){
-        this.Id = id
+        this.id = id
         this.name = name
     }
-    Id: string
+    id: string
     name: string
 }

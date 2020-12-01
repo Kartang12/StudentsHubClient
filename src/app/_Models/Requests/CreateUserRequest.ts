@@ -6,5 +6,5 @@ export class CreateUserRequest{
     Password: string
     Role: string
     Group: string
-    subjects: Subject[]
+    subjects: string[]
 }

@@ -9,16 +9,20 @@ import { RegisterComponent } from './admin/register/register.component';
 import { TeatcherComponent } from './teatcher/teatcher.component';
 import { TeatcherGuard } from './teatcher.guard';
 import { TeatcherTaskComponent } from './teatcher/teatcher-task/teatcher-task.component';
+import { CreateUserRequest } from './_Models/Requests/CreateUserRequest';
+import { MarksComponent } from './student/marks/marks.component';
+import { UsersComponent } from './admin/users/users.component';
 
 const studentRoutes: Routes = [
   // { path: '/changeMe', component: RegisterComponent  },
-  { path: 'task/:id', component: TaskComponent}
+  { path: 'task/:id', component: TaskComponent},
+  { path: 'marks', component: MarksComponent}
 ];
 
 const adminRoutes: Routes = [
   // { path: '/changeMe', component: RegisterComponent  },
   { path: 'create', component: RegisterComponent },
-  { path: 'users', component: TaskComponent}
+  { path: 'users', component: UsersComponent}
 ];
 
 const teatcherRoutes: Routes = [
@@ -35,13 +39,8 @@ const appRoutes: Routes = [
   { path: 'student', component: StudentComponent },
   { path: 'student', component: StudentComponent, children: studentRoutes },
   { path: 'admin', component: AdminComponent, canActivate: [AdminGuard] },
-  { path: 'admin', component: AdminComponent, children: adminRoutes },
-  // { path: 'Admin', component: AdminComponent, canActivate: [AdminGuard]},
-  // { path: 'Admin', component: AdminComponent, children: adminRoutes , canActivate: [AdminGuard]},
+  { path: 'admin', component: AdminComponent, children: adminRoutes }
 ];
-
-
-
 
 
 @NgModule({
