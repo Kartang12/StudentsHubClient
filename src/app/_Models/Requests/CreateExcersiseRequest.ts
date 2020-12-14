@@ -5,5 +5,5 @@ export class CreateExcersiseRequest
     title: string
     content: string
     correctAnswer: string   
-    subjectName: string 
+    subjectId: string 
 }

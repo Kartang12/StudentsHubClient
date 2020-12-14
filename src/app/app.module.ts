@@ -14,6 +14,8 @@ import { TeatcherTaskComponent } from './teatcher/teatcher-task/teatcher-task.co
 import { RegisterComponent } from './admin/register/register.component';
 import { MarksComponent } from './student/marks/marks.component';
 import { UsersComponent } from './admin/users/users.component';
+import { SubjectsComponent } from './admin/subjects/subjects.component';
+import { FormsComponent } from './admin/forms/forms.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { UsersComponent } from './admin/users/users.component';
     TeatcherTaskComponent,
     RegisterComponent,
     MarksComponent,
-    UsersComponent
+    UsersComponent,
+    SubjectsComponent,
+    FormsComponent
   ],
   imports: [
     BrowserModule,

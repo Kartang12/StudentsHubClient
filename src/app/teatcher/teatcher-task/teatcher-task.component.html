@@ -16,12 +16,12 @@
                     <br>
                     <input [(ngModel)]="newEx.correctAnswer" type = "text">
                     <br>
-                    <div *ngIf="!flag">
-                        <h2>Предмет</h2>
-                        <br>
-                            <input [(ngModel)]="newEx.subjectName" type = "text">
-                        <br>
-                    </div>
+                    
+                    <label>Предмет</label>
+                    <select class="custom-select" [(ngModel)]="newEx.subjectId" name="FormId">
+                        <option *ngFor="let subject of subjects" value="{{subject.id}}">{{subject.name}}</option>
+                    </select>
+                    
                     <button *ngIf="flag == true" class="mt-5 mx-5 btn btn-success" type="button" (click)="saveTask()">Сохранить</button>
                     <button *ngIf="flag == true" class="mt-5 mx-5 btn btn-danger" type="button" (click)="deleteTask()">Удалить</button>
                     <button *ngIf="!flag" class="mt-5" type="button" (click)="createTask()">Создать</button>

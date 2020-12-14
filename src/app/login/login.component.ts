@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('id', res.id)
         localStorage.setItem('name', res.name)
         localStorage.setItem('email', res.email)
-        localStorage.setItem('role', res.roles[0])
+        localStorage.setItem('role', res.role)
         if(localStorage.getItem('role') == "User")
           this.route = "/student/"
         if(localStorage.getItem('role') == "Admin")

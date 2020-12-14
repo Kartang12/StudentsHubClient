@@ -1,0 +1,18 @@
+<div class="d-flex" id="wrapper">
+    <div class="bg-light border-right" id="sidebar-wrapper">
+        <ul>
+            <li *ngFor="let form of forms; let i = index">
+                <p class="mx-2 my-2">{{form.number}}</p>
+                <button class="btn btn-danger" (click)="deleteForm(form.id)" style="align-self: right;">Удалить</button>
+            </li>
+        </ul>
+    </div>
+
+    <div id="page-content-wrapper">
+        <div class="col-12 offset-2">
+            <h3>Номер</h3>
+            <input type="number" [(ngModel)]="newForm.number" name="name" class="form-control rounded-0" id="nameDD" required/>
+            <button (click)="addForm()" class="btn btn-primary float-right">Создать</button>
+        </div>
+    </div>
+</div>

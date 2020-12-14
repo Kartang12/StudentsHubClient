@@ -14,17 +14,17 @@ import { Excersise } from '../_Models/Excersise';
 })
 export class TeatcherComponent implements OnInit {
 
-  // test:number[][] = [[1,2],[4,5,6],[7,8,9,10]];
   subjects:Subject[]
   subEx:SubjectExcersise[] = []
   flag:boolean = false;
-  // subEx$: Observable<SubjectExcersise[]> = new Observable<SubjectExcersise[]>()
 
-  constructor(private exService: ExcersiseService, private subService:SubjectService, private http: HttpClient) { }
+  constructor(
+    private exService: ExcersiseService, 
+    private subService:SubjectService, 
+    private http: HttpClient) { }
 
   ngOnInit(): void {
     this.getSubjects()
-    // this.flag = true
   }
 
 
@@ -34,18 +34,19 @@ export class TeatcherComponent implements OnInit {
 
   getSubjects(){
     let id = localStorage.getItem("id")
-    this.subService.GetSubjectsBuUserId(localStorage.getItem("id")).subscribe(
+    this.subService.SubjectsForTeatcher(localStorage.getItem("id")).subscribe(
       res => {
+        console.log(res)
         this.subjects = res
-        for (const sub of this.subjects){
-          this.exService.GetExcesisesBySubject(sub.name).subscribe(
-            res=>{
-              let temp = res
-              this.subEx.push(new SubjectExcersise(sub, temp))
-              console.log(this.subEx)
-            }
-          )
-        }
+        // for (const sub of this.subjects){
+        //   this.exService.GetExcesisesBySubject(sub.name).subscribe(
+        //     res=>{
+        //       let temp = res
+        //       this.subEx.push(new SubjectExcersise(sub, temp))
+        //       console.log(this.subEx)
+        //     }
+        //   )
+        // }
       },
     )
   }

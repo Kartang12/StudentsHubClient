@@ -20,20 +20,23 @@
               <input type="password" [(ngModel)]="newUser.Password" name="password" class="form-control rounded-0" required/>
             </div>
             <div class="form-group">
+              <label>Роль</label>
               <select class="custom-select" [(ngModel)]="newUser.Role" name="role">
                 <option *ngFor="let role of roles">{{role.name}}</option>
               </select>
             </div>
-            <div class="form-group">
-              <select class="custom-select" [(ngModel)]="newUser.Group" name="group">
-                <option *ngFor="let group of groups">{{group.name}}</option>
+            <div *ngIf="newUser.Role == 'User'" class="form-group">
+              <label>Класс</label>
+              <select class="custom-select" [(ngModel)]="newUser.FormId" name="FormId">
+                <option *ngFor="let form of forms" value="{{form.id}}">{{form.number}}</option>
               </select>
             </div>
-            <div class="form-group">
+            <div *ngIf="newUser.Role == 'Teatcher'" class="form-group">
+              <label>Предметы</label>
               <ul>
                 <li *ngFor="let subject of subjects; let i = index">
-                  <input class="form-check-input" [(ngModel)]="subject.id" type="checkbox" value="{{subject.name}}" id="{{subject.name}}" (change)="updateCheckedOptions(i, $event)">
-                  <label class="form-check-label" for="{{subject.name}}">
+                  <input class="form-check-input" type="checkbox" id="{{subject.id}}" (change)="updateCheckedOptions(i, $event)">
+                  <label class="form-check-label" for="{{subject.id}}">
                     {{subject.name}}
                   </label>
                 </li>

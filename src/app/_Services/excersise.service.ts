@@ -11,11 +11,11 @@ export class ExcersiseService {
 
   port:Port = new Port();
   private _getExcesisesBySubject = "https://localhost:"+this.port.port+"/api/v1/excersises"
-  private _getExcesisesById = "https://localhost:"+this.port.port+"/api/v1/excersise"
+  private _getExcesisesById = "https://localhost:"+this.port.port+"/api/v1/exercise"
   private _saveExcesise = "https://localhost:"+this.port.port+"/api/v1/excersises/save"
-  private _updateExcersise = "https://localhost:"+this.port.port+"/api/v1/excersises/"
-  private _deleteExcersise = "https://localhost:"+this.port.port+"/api/v1/excersises/"
-  private _createExcersise = "https://localhost:"+this.port.port+"/api/v1/excersises"
+  private _updateExcersise = "https://localhost:"+this.port.port+"/api/v1/exercises/"
+  private _deleteExcersise = "https://localhost:"+this.port.port+"/api/v1/exercise/"
+  private _createExcersise = "https://localhost:"+this.port.port+"/api/v1/exercise"
   private _getMarks = "https://localhost:"+this.port.port+"/api/v1/marks/"
 
   constructor(private http: HttpClient) { }

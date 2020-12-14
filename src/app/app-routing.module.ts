@@ -4,14 +4,15 @@ import { LoginComponent } from './login/login.component';
 import { StudentComponent } from './student/student.component';
 import { TaskComponent } from './student/task/task.component';
 import { AdminComponent } from './admin/admin.component';
-import { AdminGuard } from './admin.guard';
+import { AdminGuard } from './_Guards/admin.guard';
 import { RegisterComponent } from './admin/register/register.component';
 import { TeatcherComponent } from './teatcher/teatcher.component';
-import { TeatcherGuard } from './teatcher.guard';
+import { TeatcherGuard } from './_Guards/teatcher.guard';
 import { TeatcherTaskComponent } from './teatcher/teatcher-task/teatcher-task.component';
-import { CreateUserRequest } from './_Models/Requests/CreateUserRequest';
 import { MarksComponent } from './student/marks/marks.component';
 import { UsersComponent } from './admin/users/users.component';
+import { FormsComponent } from './admin/forms/forms.component';
+import { SubjectsComponent } from './admin/subjects/subjects.component';
 
 const studentRoutes: Routes = [
   // { path: '/changeMe', component: RegisterComponent  },
@@ -20,15 +21,14 @@ const studentRoutes: Routes = [
 ];
 
 const adminRoutes: Routes = [
-  // { path: '/changeMe', component: RegisterComponent  },
-  { path: 'create', component: RegisterComponent },
-  { path: 'users', component: UsersComponent}
+  { path: 'forms', component: FormsComponent  },
+  { path: 'subjects/:id', component: SubjectsComponent  },
+  { path: 'users', component: UsersComponent},
+  { path: 'create', component: RegisterComponent }
 ];
 
 const teatcherRoutes: Routes = [
-  // { path: '/changeMe', component: RegisterComponent  },
   { path: 'task/:id', component: TeatcherTaskComponent }
-  // { path: 'create', component: TaskComponent}
 ];
 
 const appRoutes: Routes = [

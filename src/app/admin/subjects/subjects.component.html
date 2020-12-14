@@ -1,0 +1,45 @@
+
+
+<div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+        <div class="sidebar-heading">Предметы</div>
+        <div class="list-group list-group-flush">
+            <ul>
+                <li *ngFor="let subject of subjects">
+                    <a href="admin/subjects/{{subject.id}}">{{subject.name}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-lg-4 offset-2">
+                <h3>Название</h3>
+                <span *ngIf="flag == true">Текущее значение: <span id="currentName">{{currentSubject.name}}</span></span>
+                <br>
+                <input [(ngModel)]="newSubject.name">
+                
+                <h3>Класс</h3>
+                <span *ngIf="flag == true">Текущее значение: <span id="currentForm">{{currentSubject.form.number}}</span></span>
+                
+                <select class="custom-select" [(ngModel)]="newSubject.formId" name="form">
+                  <option *ngFor="let form of forms" value="{{form.id}}">{{form.number}}</option>
+                </select>
+
+                <div id="editButtons">
+                    <button *ngIf="flag == true" class="mt-5 mx-5 btn btn-success" type="button" (click)="updateSubject(this.currentSubject.id)">Сохранить</button>
+                    <button *ngIf="flag == true" class="mt-5 mx-5 btn btn-danger" type="button" (click)="deleteSubject(this.currentSubject.id)">Удалить</button>
+                </div>
+                <button *ngIf="!flag" class="mt-5" type="button" (click)="createSubject(this.newSubject)">Создать</button>
+            </div>
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+  </div>

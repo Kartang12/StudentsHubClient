@@ -1,12 +1,13 @@
 <div class="d-flex" id="wrapper">
     <div class="bg-light border-right" id="sidebar-wrapper">
       <div class="sidebar-heading">Мои курсы </div>
-      <a href="teatcher/task/0">Новое задание</a>
+      <a routerLink="/teatcher/task/0">Новое задание</a>
       <div class="list-group list-group-flush">
-        <ul *ngFor="let sub of subEx">
-          <h3>{{sub.subject.name}}</h3>
-          <li *ngFor="let ex of sub.excersises">
-            <a href="teatcher/task/{{ex.id}}">{{ex.title}}</a>
+        <ul *ngFor="let sub of subjects">
+          <a>{{sub.name}}</a>
+          <li *ngFor="let ex of sub.exercises">
+            <a routerLink="/teatcher/task/{{ex.exId}}">{{ex.title}}</a>
+            <!-- <a routerLink="['/teatcher/task/', {{ex.exId}}]">{{ex.title}}</a> -->
           </li>
         </ul>
       </div>

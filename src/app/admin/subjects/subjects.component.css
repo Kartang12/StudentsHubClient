@@ -1,0 +1,10 @@
+#editButtons{
+    display: flex;
+    flex-direction: row;
+    margin-left: 0;
+}
+
+#currentName{
+    color: green;
+    text-decoration: underline;
+}

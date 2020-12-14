@@ -35,18 +35,19 @@ export class StudentComponent implements OnInit {
 
   getSubjects(){
     let id = localStorage.getItem("id")
-    this.subService.GetSubjectsBuUserId(localStorage.getItem("id")).subscribe(
+    this.subService.SubjectsForStudent(localStorage.getItem("id")).subscribe(
       res => {
+        console.log(res)
         this.subjects = res
-        for (const sub of this.subjects){
-          this.exService.GetExcesisesBySubject(sub.name).subscribe(
-            res=>{
-              let temp = res
-              this.subEx.push(new SubjectExcersise(sub, temp))
-              console.log(this.subEx)
-            }
-          )
-        }
+        // for (const sub of this.subjects){
+        //   this.exService.GetExcesisesBySubject(sub.name).subscribe(
+        //     res=>{
+        //       let temp = res
+        //       this.subEx.push(new SubjectExcersise(sub, temp))
+        //       console.log(this.subEx)
+        //     }
+        //   )
+        // }
       },
     )
   }

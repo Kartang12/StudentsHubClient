@@ -16,14 +16,18 @@ export class TaskComponent implements OnInit {
     this.routeSubscription = route.params.subscribe(params => this.taskId = params['id']);
   }
   
+    loaded:boolean = false
+
     taskId:string
     ex:Excersise
     answer:string
   ngOnInit(): void {
     this.exService.GetExcesisesById(this.taskId).subscribe(res=> 
-      this.ex = res),
+      {this.ex = res,
+      this.loaded = true},
       err=> console.log(err)
-  }
+      )
+    }
 
   getVal(val){
     this.answer=val;

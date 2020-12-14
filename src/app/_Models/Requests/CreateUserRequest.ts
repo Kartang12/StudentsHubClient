@@ -5,6 +5,6 @@ export class CreateUserRequest{
     Name: string
     Password: string
     Role: string
-    Group: string
-    subjects: string[]
+    FormId: string
+    SubjectIds: string[]
 }
