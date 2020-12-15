@@ -3,6 +3,7 @@ import { Port } from '../_Models/Port';
 import { HttpClient } from '@angular/common/http';
 import { ExcersiseAnswerRequest } from '../_Models/Requests/ExcersiseAnswerRequest';
 import { CreateExcersiseRequest } from '../_Models/Requests/CreateExcersiseRequest';
+import { CheckExRequest } from '../_Models/Requests/CheckExRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +13,11 @@ export class ExcersiseService {
   port:Port = new Port();
   private _getExcesisesBySubject = "https://localhost:"+this.port.port+"/api/v1/excersises"
   private _getExcesisesById = "https://localhost:"+this.port.port+"/api/v1/exercise"
-  private _saveExcesise = "https://localhost:"+this.port.port+"/api/v1/excersises/save"
+  private _saveExcesise = "https://localhost:"+this.port.port+"/api/v1/exercise/save"
   private _updateExcersise = "https://localhost:"+this.port.port+"/api/v1/exercises/"
   private _deleteExcersise = "https://localhost:"+this.port.port+"/api/v1/exercise/"
   private _createExcersise = "https://localhost:"+this.port.port+"/api/v1/exercise"
+  private _checkExcersise = "https://localhost:"+this.port.port+"/api/v1/checkExercise"
   private _getMarks = "https://localhost:"+this.port.port+"/api/v1/marks/"
 
   constructor(private http: HttpClient) { }
@@ -51,6 +53,10 @@ export class ExcersiseService {
 
   GetMarks(){
     return this.http.get<any>(this._getMarks+localStorage.getItem('id'))
+  }
+
+  CheckExercise(req:CheckExRequest){
+    return this.http.post<any>(this._checkExcersise, req)
   }
 
 }
