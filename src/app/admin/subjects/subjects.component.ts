@@ -73,6 +73,7 @@ export class SubjectsComponent implements OnInit {
 
   updateSubject(id:string){
     this.newSubject.id = id
+    console.log(this.newSubject)
     this._subjectService.UpdateSubject(this.newSubject).subscribe(
       res => console.log(res),
       err => console.log(err)

@@ -5,6 +5,7 @@ import { Excersise } from 'src/app/_Models/Excersise';
 import { CreateExcersiseRequest } from 'src/app/_Models/Requests/CreateExcersiseRequest';
 import { Subject } from 'src/app/_Models/Subject';
 import { SubjectService } from 'src/app/_Services/subject.service';
+import { UpdateExRequest } from 'src/app/_Models/Requests/UpdateExRequest';
 
 @Component({
   selector: 'app-teatcher-task',
@@ -24,6 +25,7 @@ export class TeatcherTaskComponent implements OnInit {
           // window.location.reload(); 
     }
     
+    updateEx:UpdateExRequest = new UpdateExRequest()
     subjects:Subject[] = []
     taskId:string = ''
     ex:Excersise = new Excersise()
@@ -44,14 +46,22 @@ export class TeatcherTaskComponent implements OnInit {
       this.exService.GetExcesisesById(this.taskId).subscribe(
         res=> this.ex = res),
         err=> console.log(err)
+    
   }
 
   saveTask(){
-    this.exService.UpdateExercise(this.taskId, this.newEx).subscribe(
-      res => console.log(res),
+    this.updateEx.Id = this.taskId
+    this.updateEx.Title = this.newEx.title
+    this.updateEx.Content = this.newEx.content
+    this.updateEx.CorrectAnswer = this.newEx.correctAnswer
+    console.log(this.updateEx)
+    this.exService.UpdateExercise(this.updateEx).subscribe(
+      res => {
+        console.log(res)
+        window.location.reload()
+      },
       err => console.log(err)
     )
-    window.location.reload()
   }
 
   deleteTask(){
@@ -61,8 +71,14 @@ export class TeatcherTaskComponent implements OnInit {
 
   createTask(){
     console.log(this.newEx)
-    this.exService.CreateExercise(this.newEx).subscribe()
-    window.location.reload();
+    this.exService.CreateExercise(this.newEx).subscribe(
+      res => {
+        console.log(res)
+        window.location.reload();
+      },
+      err => console.log(err)
+    )
+    
   }
 
   getSubjects(){

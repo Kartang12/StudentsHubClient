@@ -23,7 +23,9 @@ export class RegisterComponent implements OnInit {
     private _roleService:RolesService,
     private _subjectService:SubjectService,
     private _authService:AuthService
-    ) { }
+    ) { 
+      this.newUser.Role = "Admin"
+    }
 
   ngOnInit():void {
     this.getRoles()
@@ -38,6 +40,7 @@ export class RegisterComponent implements OnInit {
   newUser: CreateUserRequest = new CreateUserRequest()
   indexes:number[] = []
 
+  error:string = ''
 
   registerUser() {
     this.newUser.SubjectIds = []
@@ -49,7 +52,10 @@ export class RegisterComponent implements OnInit {
     .subscribe(
       res => console.info(res),
       err => {
-        console.warn(err)
+        if(err.error.errors != undefined)
+          this.error = err.error.errors[0]
+        else
+          this.error = "Пароль не соответствует требованиям"
       }
     )
   }

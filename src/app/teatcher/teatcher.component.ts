@@ -27,7 +27,13 @@ export class TeatcherComponent implements OnInit {
     this.getSubjects()
   }
 
-
+  logOut(){
+    localStorage.removeItem("id")
+    localStorage.removeItem("name")
+    localStorage.removeItem("email")
+    localStorage.removeItem("role")
+  }
+  
   getExcersises(subject:string): Observable<Excersise[]>{
     return this.exService.GetExcesisesBySubject(subject)
   }

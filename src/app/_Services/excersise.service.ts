@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { ExcersiseAnswerRequest } from '../_Models/Requests/ExcersiseAnswerRequest';
 import { CreateExcersiseRequest } from '../_Models/Requests/CreateExcersiseRequest';
 import { CheckExRequest } from '../_Models/Requests/CheckExRequest';
+import { UpdateExRequest } from '../_Models/Requests/UpdateExRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class ExcersiseService {
   private _getExcesisesBySubject = "https://localhost:"+this.port.port+"/api/v1/excersises"
   private _getExcesisesById = "https://localhost:"+this.port.port+"/api/v1/exercise"
   private _saveExcesise = "https://localhost:"+this.port.port+"/api/v1/exercise/save"
-  private _updateExcersise = "https://localhost:"+this.port.port+"/api/v1/exercises/"
+  private _updateExcersise = "https://localhost:"+this.port.port+"/api/v1/exercise"
   private _deleteExcersise = "https://localhost:"+this.port.port+"/api/v1/exercise/"
   private _createExcersise = "https://localhost:"+this.port.port+"/api/v1/exercise"
   private _checkExcersise = "https://localhost:"+this.port.port+"/api/v1/checkExercise"
@@ -37,9 +38,9 @@ export class ExcersiseService {
     return this.http.post(this._saveExcesise, ex)
   }
 
-  UpdateExercise(taskId:string, ex:CreateExcersiseRequest){
-    // console.log(ex)
-    return this.http.put(this._updateExcersise+taskId, ex)
+  UpdateExercise(ex:UpdateExRequest){
+    console.log(ex)
+    return this.http.put(this._updateExcersise, ex)
   }
 
   DeleteExercise(taskId:string){

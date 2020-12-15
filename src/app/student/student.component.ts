@@ -28,6 +28,12 @@ export class StudentComponent implements OnInit {
     // this.flag = true
   }
 
+  logOut(){
+    localStorage.removeItem("id")
+    localStorage.removeItem("name")
+    localStorage.removeItem("email")
+    localStorage.removeItem("role")
+  }
 
   getExcersises(subject:string): Observable<Excersise[]>{
     return this.exService.GetExcesisesBySubject(subject)
