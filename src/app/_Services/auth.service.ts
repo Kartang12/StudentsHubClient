@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {HttpResponseBase} from '@angular/common/http'
 import { Port } from '../_Models/Port'
-import { AuthSuccessResponse } from '../_Models/Responses/AuthSuccessResponse';
+import { JwtHelperService } from '@auth0/angular-jwt';
+
+export const ACCESS_TOKEN = "api_access_token" 
 
 
 @Injectable({
@@ -12,34 +14,39 @@ export class AuthService {
   port:Port = new Port();
   private _registerUrl = "https://localhost:"+this.port.port+"/api/v1/identity/register"
   private _loginUrl = "https://localhost:"+this.port.port+"/api/v1/identity/login"
-  constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient,
+    private jwtHelper:JwtHelperService) { }
 
   registerUser(user){
     return this.http.post<any>(this._registerUrl, user)
   }
   
+  isAuthenticated(): boolean{
+    let token = localStorage.getItem("token")
+    return token && !this.jwtHelper.isTokenExpired(token)
+  }
+
   loginUser(user){
     return this.http.post<any>(this._loginUrl, user)
   }
 
   logedIn(){
-    if (localStorage.getItem("id") !== null)
-      return true;
+
     return false;
   }
 
-  isTeatcher(){
-    if (localStorage.getItem("role") !== null) {
-      return localStorage.getItem('role')?.toLocaleLowerCase() === "teatcher";
-    }
+  isUser(){
+    
     return false;
   }
 
   isAdmin(){
-    if (localStorage.getItem("role") !== null) {
-      return localStorage.getItem('role')?.toLocaleLowerCase() === "admin";
-    }
+    
     return false;
+  }
+
+  createAuthorizationHeader(headers: HttpHeaders) {
+    headers.append('Authorization', 'Bearer ' + localStorage.getItem("token")); 
   }
 
 }

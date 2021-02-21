@@ -6,38 +6,42 @@ import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { StudentComponent } from './student/student.component';
-import { TaskComponent } from './student/task/task.component';
 import { AdminComponent } from './admin/admin.component';
-import { TeatcherComponent } from './teatcher/teatcher.component';
-import { TeatcherTaskComponent } from './teatcher/teatcher-task/teatcher-task.component';
-import { RegisterComponent } from './admin/register/register.component';
-import { MarksComponent } from './student/marks/marks.component';
 import { UsersComponent } from './admin/users/users.component';
-import { SubjectsComponent } from './admin/subjects/subjects.component';
-import { FormsComponent } from './admin/forms/forms.component';
+
+import { environment } from 'src/environments/environment';
+import { JwtModule } from '@auth0/angular-jwt';
+import { ApisComponent } from './user/apis/apis.component'
+import { UserComponent } from './user/user.component';
+import { MyTasksComponent } from './user/my-tasks/my-tasks.component';
+
+
+export function tokenGetter(){
+  return localStorage.getItem('token')
+}
 
 @NgModule({
   declarations: [
+    UserComponent,
     AppComponent,
     LoginComponent,
-    StudentComponent,
-    TaskComponent,
     AdminComponent,
-    TeatcherComponent,
-    TeatcherTaskComponent,
-    RegisterComponent,
-    MarksComponent,
     UsersComponent,
-    SubjectsComponent,
-    FormsComponent
+    ApisComponent,
+    MyTasksComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    CommonModule
+    CommonModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter,
+        allowedDomains: environment.tokenWhiteListDomains
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -4,7 +4,6 @@ import { HttpClient } from '@angular/common/http';
 
 import {HttpResponseBase} from '@angular/common/http'
 import { Port } from '../_Models/Port';
-import { UserChangePassword } from '../_Models/UserChangePassword';
 
 @Injectable({
   providedIn: 'root'
@@ -26,16 +25,7 @@ export class UserService {
     return this.http.get<any>(this._specialUserUrl+name)
   }
 
-  // updateUser(name, user:UserData){
-  //   const body = { name: user.Name, role: user.Role, business: user.BusinessType }
-  //   return this.http.put<HttpResponseBase>(this._updateUserUrl + name, body)
-  // }
-
   deleteUser(id){
     return this.http.delete<HttpResponseBase>(this._deleteUserUrl + id)
-  }
-
-  changeMe(username:string, data:UserChangePassword){
-    return this.http.put<any>(this._changeMeUrl + username, data)
   }
 }

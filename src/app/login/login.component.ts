@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_Services/auth.service';
 import { Router } from '@angular/router';
-import { AuthSuccessResponse } from '../_Models/Responses/AuthSuccessResponse';
+import { UserLoginRequest } from '../_Models/Requests/UserLoginRequest';
 
 @Component({
   selector: 'app-login',
@@ -11,33 +11,19 @@ import { AuthSuccessResponse } from '../_Models/Responses/AuthSuccessResponse';
 
 export class LoginComponent implements OnInit {
 
-  route:String = "/login"
-  loginUserData = {
-    email: "",
-    password: ""
-  }
-  user: AuthSuccessResponse = null;
+  route:String = "/user/apis"
+  req:UserLoginRequest = new UserLoginRequest();
+
   constructor(private _auth: AuthService, private router:Router){}
 
   ngOnInit() {
   }
 
   loginUser() {
-    this._auth.loginUser(this.loginUserData)
+    this._auth.loginUser(this.req)
     .subscribe(
       res => {
-        // this.user = JSON.parse(JSON.stringify(res))
-        console.log(res.roles)
-        localStorage.setItem('id', res.id)
-        localStorage.setItem('name', res.name)
-        localStorage.setItem('email', res.email)
-        localStorage.setItem('role', res.role)
-        if(localStorage.getItem('role') == "User")
-          this.route = "/student/"
-        if(localStorage.getItem('role') == "Admin")
-          this.route = "/admin/"
-        if(localStorage.getItem('role') == "Teatcher")
-          this.route = "/teatcher/"
+        localStorage.setItem('token', res.token)
         this.router.navigate([this.route])
       },
       err => console.log(err)

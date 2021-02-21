@@ -10,11 +10,11 @@
           <form ngNativeValidate>
             <div class="form-group">
               <label for="uname1">email</label>
-              <input type="email" [(ngModel)]="loginUserData.email" name="email" class="form-control rounded-0" required/>
+              <input type="email" [(ngModel)]="req.Email" name="email" class="form-control rounded-0" required/>
             </div>
             <div class="form-group">
               <label>Пароль</label>
-              <input type="password" [(ngModel)]="loginUserData.password" name="password" class="form-control rounded-0" required/>
+              <input type="password" [(ngModel)]="req.Password" name="password" class="form-control rounded-0" required/>
             </div>
             <button (click)="loginUser()" class="btn btn-success float-right">Войти</button>
           </form>
